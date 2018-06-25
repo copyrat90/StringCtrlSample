@@ -12,7 +12,7 @@ private:
 	int m_nLength;
 public:
 	int SetString(const char *pszParam);
-	const char* GetString(void);
+	const char* GetString(void) const;
 	void Release(void);
 };
 

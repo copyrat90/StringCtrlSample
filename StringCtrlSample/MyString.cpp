@@ -32,7 +32,7 @@ int CMyString::SetString(const char *pszParam)
 }
 
 
-const char* CMyString::GetString(void)
+const char* CMyString::GetString(void) const
 {
 	return m_pszData;
 }
@@ -43,6 +43,7 @@ void CMyString::Release(void)
 	if (m_pszData != NULL)
 		delete[] m_pszData;
 
+	// Release 했으므로 주요 멤버 초기화
 	m_pszData = NULL;
 	m_nLength = 0;
 }
