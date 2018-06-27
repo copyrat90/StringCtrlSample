@@ -4,6 +4,8 @@ class CMyString
 {
 public:
 	CMyString();
+	// 변환 생성자
+	explicit CMyString(const char *);
 	// 복사 생성자
 	CMyString(const CMyString &rhs);
 	~CMyString();
@@ -20,5 +22,7 @@ public:
 
 	void Release(void);
 	CMyString& operator=(const CMyString &rhs);
+
+	operator char *(void) const;
 };
 

@@ -5,6 +5,12 @@ CMyString::CMyString() : m_pszData(NULL), m_nLength(0)
 {
 }
 
+CMyString::CMyString(const char *pszParam)
+	: m_pszData(NULL), m_nLength(0)
+{
+	this->SetString(pszParam);
+}
+
 // 복사 생성자
 CMyString::CMyString(const CMyString &rhs)
 	: m_pszData(NULL), m_nLength(0)
@@ -16,6 +22,11 @@ CMyString::~CMyString()
 {
 	// 객체가 소멸하기 전에 메모리를 해제한다.
 	Release();
+}
+
+CMyString::operator char *(void) const
+{
+	return m_pszData;
 }
 
 int CMyString::SetString(const char *pszParam)
