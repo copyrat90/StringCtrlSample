@@ -5,13 +5,18 @@ CMyString::CMyString() : m_pszData(NULL), m_nLength(0)
 {
 }
 
+// 복사 생성자
+CMyString::CMyString(const CMyString &rhs)
+	: m_pszData(NULL), m_nLength(0)
+{
+	this->SetString(rhs.GetString());
+}
 
 CMyString::~CMyString()
 {
 	// 객체가 소멸하기 전에 메모리를 해제한다.
 	Release();
 }
-
 
 int CMyString::SetString(const char *pszParam)
 {
@@ -46,4 +51,14 @@ void CMyString::Release(void)
 	// Release 했으므로 주요 멤버 초기화
 	m_pszData = NULL;
 	m_nLength = 0;
+}
+
+
+CMyString& CMyString::operator=(const CMyString &rhs)
+{
+	// 자기 자신에 대한 대입이면 아무것도 하지 않는다.
+	if (this != &rhs)
+		this->SetString(rhs.GetString());
+
+	return *this;
 }
